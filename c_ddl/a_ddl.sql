@@ -70,27 +70,3 @@ CREATE TABLE `student_encoding` (
  drop database `example1`;
  drop database `example2`;
  # drop database `example3`;
- 
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

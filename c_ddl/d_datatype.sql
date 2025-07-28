@@ -54,21 +54,3 @@ select * from `rainbow`;
 
 # Error: Data truncated for column 'color' 
 # >> Enum 목록에 존재하지 않는 데이터 삽입 시 발생
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

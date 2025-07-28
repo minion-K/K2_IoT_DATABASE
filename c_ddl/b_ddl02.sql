@@ -92,30 +92,3 @@ desc student;
 
 # if exists / if not exists
 # > 선택적 키워드, 오류 방지 키워드
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

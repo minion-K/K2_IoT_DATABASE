@@ -47,11 +47,11 @@ COLLATE utf8mb4_unicods_ci; # 정렬 방식 (문자열끼리 비교하고 정렬
 
 #utf 8(문자까지만 인코딩) VS utf 8mb4 모든 유니코드 문자 저장 - 이모지 & 한자 포함);
 
-# 0	8	14:31:54	CREATE TABLE `student_encoding` (
-  student_id int,   
+CREATE TABLE `student_encoding` (
+	 student_id int,   
      student_name char(8),   
      student_gender char(8) 
- )	
+ );
  # No database selected Select the default DB to be used by double-clicking its name in the SCHEMAS list in the sidebar.
  # > DB(스키마)를 지정하지 않으면 테이블 생성 불가
  # 1) 테이블명 앞에 'DB명.' 첨부
@@ -63,13 +63,15 @@ COLLATE utf8mb4_unicods_ci; # 정렬 방식 (문자열끼리 비교하고 정렬
  # drop: DB와 테이블의 구조와 데이터 전체를 삭제
  # 기본 형태
  # drop database `데이터베이스명`;
- # drop table `데이터베스명`.`테이블명`;
+ # drop table `데이터베이스명`.`테이블명`;
  
  drop table `school`.`student`;
  drop database `school`;
  drop database `example1`;
  drop database `example2`;
  # drop database `example3`;
+ 
+ 
 
 
 

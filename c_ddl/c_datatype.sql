@@ -157,8 +157,3 @@ insert into employee values(true);
 
 select * from employee
 # true 값이 1로 변환되어 저장
-
-
-
-
-

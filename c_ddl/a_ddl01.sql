@@ -41,7 +41,7 @@ CREATE TABLE `student_encoding` (
     student_gender char(8) 
 )
 default CHARACTER SET = utf8bm4
-COLLATE utf8mb4_unicods_ci; # 정렬 방식 (문자열끼리 비교하고 정렬할 때 어떤 기준으로 할지 정하는 기능)
+COLLATE utf8mb4_unicode_ci; # 정렬 방식 (문자열끼리 비교하고 정렬할 때 어떤 기준으로 할지 정하는 기능)
 # cf) ci(case-insensitive): 대소문자 구분하지 않음 ('abc' = 'ABC)
 # cf) utf8mb4_general_ci: 속도가 빠름, 정확도 낮음
 

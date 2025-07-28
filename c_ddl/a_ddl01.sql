@@ -45,7 +45,7 @@ COLLATE utf8mb4_unicode_ci; # 정렬 방식 (문자열끼리 비교하고 정렬
 # cf) ci(case-insensitive): 대소문자 구분하지 않음 ('abc' = 'ABC)
 # cf) utf8mb4_general_ci: 속도가 빠름, 정확도 낮음
 
-#utf 8(문자까지만 인코딩) VS utf 8mb4 모든 유니코드 문자 저장 - 이모지 & 한자 포함);
+#utf 8(문자까지만 인코딩) VS utf 8mb4 (모든 유니코드 문자 저장 - 이모지 & 한자 포함);
 
 CREATE TABLE `student_encoding` (
 	 student_id int,   

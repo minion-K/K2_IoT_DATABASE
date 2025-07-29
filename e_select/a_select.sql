@@ -44,3 +44,148 @@ select
 	`member_id` as 고유번호, `name` as '회원 이름', `contact` as '회원 연락처'
 from
 	`members`;
+    
+## 2. 특정 조건에 부합하는 데이터 조회
+# : select A from B where C (A: 컬럼명, B: 테이블명, C: 조건식-연산자)
+
+select
+	`member_id`, `name`, `points`
+from 
+	`members`
+where
+	# 조건절에는 true/false(논리값)를 반환하는 연산자 사용
+	points > 200;
+
+# 1) 관계 연산자
+# : 이상, 이하, 초과, 미만, 일치(=), 불일치(!=)
+select * from `members`
+where 
+	name='Minji';
+    
+# 2) 논리 연산자
+# and, or, not
+# : 여러 조건을 조합하여 데이터 조회
+
+# and - 모든 조건이 참
+select * from `members`
+where
+	area_code = 'Jeju' and points >= 400;
+
+# or - 조건 중 하나라도 참
+select * from `members`
+where
+	area_code = 'Busan' or area_code = 'Seoul';
+    
+# not - 조건이 거짓(결과를 반대로 반환)
+select * from `members`
+where
+	not area_code = 'Busan';
+    
+# 3) null값 연산
+# : 직접적인 연산 X
+-- select * from `members`
+-- where
+-- 	points = null;
+
+# cf) null 값은 값이 없음을 나타냄: 그 어떤 값과도 비교, 연산이 불가
+#	>> is null, is not null 연산자 사용 - null 여부 확인 가능(true/false)
+
+# A is null
+# null인 경우 true, 아닌 경우 false
+
+# A is not null
+# null인 경우 false, 아닌 경우 true
+
+select * from `members`
+where
+	points is null;
+    
+select * from `members`
+where
+	points is not null;
+    
+# 4) between A and B 연산자
+# : A와 B 사이에
+# - 숫자형 데이터, 날짜형 데이터에 주로 사용
+select * from `members`
+where
+	points between 200 and 400; -- 이상, 이하의 개념
+    
+select * from `members`
+where
+	join_date between '2021-12-31' and '2022-01-09';
+    
+# 5) in 연산자
+# : 지정할 범위의 문자 데이터를 나열
+# - 지정된 리스트 중에서 일치하는 값이 있으면 true
+select * from `members`
+where
+	area_code in('Seoul', 'Busan', 'Jeju');
+# > 문자열 데이터에 대한 or식 간소화
+
+# 6) like 연산자
+# : 문자열 일부를 검색
+
+# cf) 와일드 카드 문자
+# _(언더스코어), %(퍼센트)
+# _: 하나의 기호가 한 글자를 허용 (정확하게 하나의 임의의 문자 공간을 나타냄)
+# %: 무엇이든지 허용 (0개 이상의 임의의 문자 공간을 나타냄)
+
+select * from `members`;
+
+# 시작이 J 이고 뒤는 0개 이상의 문자를 허용: J%
+select * from `members`
+where
+	name like 'J%';
+    
+# 시작이 J이고 뒤는 3개의 임의의 문자를 허용: J___
+select * from `members`
+where
+	name like 'J___';
+    
+# 어떤 문자열 내에서든 'un'이 포함만 되면 허용: %un%
+select * from `members`
+where
+	name like '%un%';
+    
+# 한개의 임의의 문자 뒤에 u가 0개 이상의 임의의 문자 허용: _u%
+#	(이름의 두 번째 글자가 u인 모든 회원 조회)
+select * from `members`
+where
+	name like '_u%';
+    
+# 이름이 4글자인 모든 회원 조회: ____
+select * from `members`
+where
+	name like '____';
+    
+## 날짜와 시간 조회 ##
+# date: 'YYYY-MM-DD'
+# time: 'HH:mm:SS'
+
+# 일치, 불일치(=, !=)
+# 기간값 조회(between A and B)
+
+# cf) 특정 시간 기준 그 이후의 데이터 조회
+select * from `members`
+where
+	join_date > '2022-01-02';
+    
+# cf) 날짜나 시간의 특정 부분과 일치하는 데이터 조회
+# 날짜: year(컬럼명), month(컬럼명), day(컬럼명)
+# 시간: hour(컬럼명), minute(컬럼명), second(컬럼명)
+
+select * from `members`
+where 
+	year(join_date) = '2024';
+    
+# 현재 날짜나 시간을 기준으로 조회
+# curdate(): 현재 날짜만 반환
+# now(): 현재 날짜 + 시간 반환
+
+select * from `members`
+where
+	join_date < curdate();
+    
+select curdate();
+select now();

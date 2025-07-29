@@ -165,16 +165,3 @@ set sql_safe_updates=1;
 
 delete from `example02`
 where id=1;
-
-
-
-
-
-
-
-
-
-
-
-
-

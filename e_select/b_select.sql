@@ -62,3 +62,56 @@ group by
 	area_code
 having
 	avg(points) > 200;
+    
+/*
+	6. order by
+    : 데이터 정렬
+    - 결과의 값이나 개수에 영향 X
+	- asc(ascending, 오름차순), desc(descending, 내림차순)
+*/
+select * from `members`; -- 데이터 삽입 순서대로 정렬(auto_increment PK 값에 따라 정렬)
+
+select * from `members`
+order by
+	join_date; # 과거 순 정렬
+    
+select * from `members`
+order by
+	name desc; # 이름 순 정렬(내림차순)
+    
+# cf) 정렬된 데이터를 기반으로 추가 정렬(콤마로 정렬 상태 나열)
+select * from `members`
+order by
+	grade desc, points desc;
+    
+/*
+	7. limit
+    : 출력하는 개수를 제한(반환되는 행의 수를 제한)
+    
+    limit 행수(offset 시작행)
+    - 첫 번째 행이 기본값 0
+*/
+select * from `members`;
+
+select * from `members`
+limit 5;
+
+select * from `members`
+limit 5 offset 2; -- offset 2: 세 번째 행부터 출력
+
+select * from `members`
+order by
+	grade desc
+limit 5;
+
+/*
+	cf) distinct(별개의, 뚜렷한)
+    : 중복된 결과를 제거
+    - 조회된 결과에서 중복된 데이터를 1개만 남기고 생략
+    
+    조회할 열 이름 앞에 distinct 키워드만 작성
+*/
+select * from `members`;
+
+select distinct area_code from `members`;
+select distinct grade from `members`;

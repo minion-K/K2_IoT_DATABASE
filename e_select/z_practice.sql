@@ -45,8 +45,8 @@ from `purchases`
 group by member_id;
 
 
-# 9)
-select M.member_id, M.name, sum(amount) total_amount
+# 9) 구매 금액(amount)가 가장 높은 회원의 member_id, name, 총 구매 금액을 조회
+select M.member_id, M.name, sum(P.amount) total_amount
 from `members` M
 	join `purchases` P
     on M.member_id = P.member_id

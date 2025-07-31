@@ -37,6 +37,6 @@ show table status like 'members';
 
 # cf) 생성된 인덱스 적용 방법 (create index 이후 반드시 실행하여야 성능최적화에 기여)
 analyze table members; -- analyze table 테이블명;
-show table status like 'members'; -- 49152 byte (48KB)
+show table status like 'members'; -- 49152 byte 
 
 # cf) MySQL(InnoDB 엔진)의 기본 인덱스 페이지 크기(16KB)

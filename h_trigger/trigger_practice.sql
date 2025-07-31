@@ -70,44 +70,56 @@ begin
     values(OLD.position, NEW.position, OLD.name);
 end $$
 
+INSERT INTO `players`
+VALUES
+	(201, '테스트 선수1', '타자', '1999-03-03', 2);
+    
+UPDATE players SET position = '외야수' WHERE player_id = 201;
+
 select * from player_position_logs;
 select * from players;
 
--- teams 테이블에 player_count 컬럼 추가 
-ALTER TABLE teams ADD COLUMN player_count INT DEFAULT 0;
+# 문제3)
 
--- 선수 추가 시 팀의 선수 수 증가 트리거
-DROP TRIGGER IF EXISTS after_player_insert_count;
+alter table teams add player_count int default 0;
 
-DELIMITER $$
-CREATE TRIGGER after_player_insert_count
-AFTER INSERT ON players
-FOR EACH ROW
-BEGIN
-	UPDATE teams
-	SET player_count = player_count + 1
-	WHERE team_id = NEW.team_id;
-END $$
-DELIMITER ;
+select * from teams
 
--- 선수 삭제 시 팀의 선수 수 감소 트리거
-DROP TRIGGER IF EXISTS after_player_delete_count;
+-- 선수 추가
+delimiter $$
 
-DELIMITER $$
-CREATE TRIGGER after_player_delete_count
-AFTER DELETE ON players
-FOR EACH ROW
-BEGIN
-	UPDATE teams
-	SET player_count = player_count - 1
-	WHERE team_id = OLD.team_id;
-END $$
-DELIMITER ;
+create trigger after_player_insert_count
+	after insert
+    on players
+    for each row
+begin
+	update teams
+    set player_count = player_count + 1
+    where team_id = NEW.team_id;
+end $$
+
+delimiter ;
+
+-- 선수 삭제
+delimiter $$
+
+create trigger after_player_delete_count
+	after delete
+    on players
+    for each row
+begin
+	update teams
+    set player_count = player_count - 1
+	where team_id = OLD.team_id;
+end $$
+
+delimiter ;
 
 SELECT team_id, player_count FROM teams;
 
 INSERT INTO players (player_id, name, position, birth_date, team_id)
-VALUES (303, '테스트선수3', '투수', '1994-07-07', 1);
+VALUES (404, '테스트선수3', '투수', '1994-07-07', 1);
 
--- 선수 삭제
-DELETE FROM players WHERE player_id = 303;
+DELETE FROM players WHERE player_id = 404;
+
+select * from teams;

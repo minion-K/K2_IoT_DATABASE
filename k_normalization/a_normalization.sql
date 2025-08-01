@@ -16,7 +16,7 @@
     제 1정규형 (1NF - Normal Form)
     제 2정규형 (2NF)
     제 3정규형 (3NF)
-	BCNF(Boyce-Code 보이스코드 정규형)
+	BCNF(Boyce-Codd 보이스코드 정규형)
     
     cf) 정규형(Normal Form)
     : 데이터베이스 정규화 과정에서 달성하고자 하는 일정한 규칙이나 기준

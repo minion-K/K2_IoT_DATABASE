@@ -21,7 +21,7 @@
     cf) 정규형(Normal Form)
     : 데이터베이스 정규화 과정에서 달성하고자 하는 일정한 규칙이나 기준
     
-    4, 정규화의 필요성
+    4. 정규화의 필요성
     id / name / course_id / course_name / course_instructor
     1	김태양	101			슬립테크		김준일
     1	김태양	102			IoT				이승아

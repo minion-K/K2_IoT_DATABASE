@@ -155,5 +155,54 @@ create table transaction_log (
 
 insert into accounts (account_holder, balance)
 values
-	('김동훈', 50000),
+	('김동후', 50000),
     ('김지선', 40000);
+    
+### 스토어드 프로시저 작성 ###
+delimiter $$
+
+create procedure transfer_money()
+begin
+	declare from_balance int; -- 출금 변수 선언
+    
+    -- 자동 커밋 해제
+    set autocommit = 0;
+    
+    start transaction;
+    
+    select balance into from_balance # >> into 변수명: select 결과를 변수에 저장할 때 사용
+    from accounts
+    where account_holder = '김지선';
+    
+    -- 잔액이 1000원 이상일 경우에만 송금 실행
+    if from_balance >= 10000 then
+		update accounts
+		set balance = balance - 10000
+		where account_holder = '김지선';
+        
+        update accounts
+		set balance = balance + 10000
+		where account_holder = '김동후';
+        
+        insert into transaction_log (from_account_id, to_account_id, amount)
+        values
+			(
+				(select account_id from accounts where account_holder = '김지선'),
+				(select account_id from accounts where account_holder = '김동후'),
+                10000
+            );
+		commit;
+	else
+		rollback;
+	end if;
+end $$
+
+delimiter ;
+
+call transfer_money();
+
+select * from accounts;
+select * from transaction_log;
+
+# if 조건문을 벗어나면 실행된(이체된 내역) ROLLBACK(취소);
+# > 잔고가 10000원 이상이 아닌 경우

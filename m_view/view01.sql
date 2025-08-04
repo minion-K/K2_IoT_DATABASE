@@ -75,7 +75,7 @@ select * from v_member_secure;
 
 select * from v_member_secure;
 
-# 2. SQL 쿼리의 단순화
+# SQL 쿼리의 단순화
 create view v_member_buy
 as 
 	select
@@ -92,10 +92,9 @@ where mem_name = '블랙핑크';
 #: 통계용, 필터링, 보안용 뷰 등 다양하게 사용
 
 # cf) 뷰(view)와 스프링부트 연동
-# Spring Boot는 주고 JPA또는 MybBatis를 통해 DB와 연동
+# Spring Boot는 주로 JPA 또는 MybBatis를 통해 DB와 연동
 # - 이 때, 뷰는 일반 테이블처럼 인식
 
 # cf) 뷰(view) VS 반정규화
 # 뷰: 실제 데이터를 복제하지 않고 조인 경과를 미리 정의('마치 테이블처럼')
 # 반정규화: 정규화된 테이블을 의도적으로 중복하거나 조인 없이 바로 조회할 수 있도록 재구성 - 성능 최적화
-

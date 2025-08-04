@@ -1,6 +1,7 @@
 # 뷰의 실제 생성, 수정, 삭제 #
 use market_db;
 
+# 뷰의 생성
 create view v_view_test01
 as
 	select B.mem_id 'Mem_id', M.mem_name as 'Member Name'
@@ -52,6 +53,6 @@ show create view v_view_test02;
 # : 뷰를 통해 원본 테이블의 데이터 수정 가능
 # - 단 뷰에 포함되지 않은 컬럼에 대한 제약 조건이 있을 경우 제한될 수 있음 (권장 X)
 
-# member 테이블 mem_id, mem_name(필수값,NOT NULL), addr 등 존대
+# member 테이블 mem_id, mem_name(필수값,NOT NULL), addr 등 존재
 # > member 테이블로 생성한 v_member 뷰는 mem_id, addr만 존재
 # > 뷰에서 데이터 삽입 시 mem_name 데이터에 대한 무결성 위반으로 삽입 불가

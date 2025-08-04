@@ -16,7 +16,7 @@
 # 2. REVOKE
 # : 특정 사용자에게 부여된 권한을 회수
 
-### DCL 사용 목적
+### DCL 사용 목적 ###
 # 1. 보안 강화: 민감한 데이터에 접근 가능한 사용자 제한
 # 2. 데이터 무결성 유지: 특정 사용자만 데이터를 수정할 수 있도록 제한
 # 3. 역할 기반 접근 제어: 사용자의 역할에 따라 필요한 권한만 부여 가능
@@ -29,7 +29,7 @@ select * from `purchases`;
 # : CREATE USER 명령어 사용
 CREATE USER 'readonly_user'@'localhost'IDENTIFIED BY '1234';
 
-# '계정명'@'접속범위설정' IDENTIFIED BY '사용자_로그인_비밀번호_설정'
+# '계정명'@'접속범위설정' IDENTIFIED BY '사용자_로그인_비밀번호_설정;'
 
 # cf) 접속 범위 설정
 # - localhost: 현 시스템 컴퓨터 (MySQL 서버가 설치된 해당 컴퓨터에서만 로그인 가능)
